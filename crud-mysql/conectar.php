@@ -29,7 +29,7 @@ function CONECTAR()
     //Função para incluir uma nova pessoa no banco de dados
     function INCLUIR($nome, $email, $cpf){
         $con = CONECTAR();
-        $sql = "insert into pessoas(nome, email, cpf) values ('$nome', '$email','$cpf')";
+        $sql = "INSERT INTO pessoas(nome, email, cpf) VALUES ('$nome', '$email','$cpf')";
         if( $con->query($sql)===true){
             return "ok ao gravar";
         }else{
@@ -47,14 +47,14 @@ function CONECTAR()
 
     function BUSCAR($id){
         $con = CONECTAR();
-        $sql = "select id, nome, cpf from pessoas where id = $id";
+        $sql = "select id, nome, email, cpf from pessoas where id = $id";
         $resultado = $con ->query($sql);
         $resultado =$resultado->fetch_assoc();
         return $resultado;
         
     }
 
-    function ALTERAR($id, $nome, $email, $cpf){
+    function EDITAR($id, $nome, $email, $cpf){
         $con = conectar();
         $sql = "UPDATE pessoas SET nome = '$nome', email = '$email', cpf ='$cpf' where id = $id";
         if($con->query($sql) === true){

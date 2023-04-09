@@ -22,19 +22,24 @@
     include 'conectar.php';
     
    $id = $nome = $email = $cpf ="";
-     if($_SERVER["REQUEST_METHOD"]=="GET"){
-        if(array_key_exists("id",$_GET)){
-        $id = $_GET["id"];
+     if($_SERVER["REQUEST_METHOD"] == "GET"){
+       if(array_key_exists("id",$_GET)){
+        $id = $_GET['id'];
         $pessoas = BUSCAR($id);
         $nome = $pessoas['nome'];
         $email = $pessoas['email'];
         $cpf = $pessoas['cpf'];
-        }  
-     }
+       } 
+       if (array_key_exists('apagar',$_GET)){
+        $apagar = $_GET['apagar'];
+        $msg = apagar($apagar);
+        echo $msg;
+        }
+     }    
      ?>
   
     <form action="form-pessoas.php" method="post">
-
+    <!--<input type="hidden" name="id"  value="<?php echo $id; ?>">-->
        
             <strong>Nome:</strong><br>
             <input type="text" name="nome"value=" <?php echo $nome;?>"required><br>
@@ -45,9 +50,8 @@
             <button class=botao type= submit> GRAVAR</button>
             <!-- Botão para um chamar a pagina com campos limpos -->
             <a href="form-pessoas.php"><input type= "button" value ="NOVO"> </a>
-            <!-- Botão para apagar um dado somedo do id selecionado-->
-            <?php echo 'onclick="window.location.replace(\'form-pessoa.php?apagar="';
-    echo '$id\')"'; ?>
+            <!-- Botão para apagar um dado do do id selecionado-->
+         
            
               
 
@@ -74,17 +78,18 @@
        
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         { 
-        $id = $_POST['id'];
+        
         $nome = $_POST['nome'];
         $email =$_POST['email'];
         $cpf =$_POST['cpf'];
        
        // $genero=$_POST['genero'];
-
+       $id = $_POST['id'];
+      
        if($id==''){
                     $msg =INCLUIR($nome, $email, $cpf);
                  } else{
-                     $msg = ALTERAR($id, $nome, $email, $cpf);
+                     $msg = EDITAR($id, $nome, $email, $cpf);
                  }
         }echo"<br>";
         ?>  
