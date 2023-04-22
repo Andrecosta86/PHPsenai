@@ -14,7 +14,8 @@ CREATE TABLE pessoas (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nome varchar(100),
     email varchar(100),	
-	cpf varchar(11)
+	cpf varchar(11),
+    sexo varchar(1)
 );
 -- o varchar foi 14 pois contando os numeros e pontos no cpf dão 14
 

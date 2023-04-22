@@ -16,12 +16,12 @@
                    
         </div>
         <text><strong>Curso PHP da instituição Senai</strong></text><br>
-        <text><strong>Preencha os dasdos abaixo para efeituar o cadastro:</strong></text><br>
+        <text><strong>Preencha os dasdos abaixo para efeituar o cadastro:</strong></text><br><br>
     </div>
      <?php
     include 'conectar.php';
     
-   $id = $nome = $email = $cpf ="";
+   $id = $nome = $email = $cpf =$sexo ="";
      if($_SERVER["REQUEST_METHOD"] == "GET"){
        if(array_key_exists("id",$_GET)){
         $id = $_GET['id'];
@@ -29,6 +29,7 @@
         $nome = $pessoas['nome'];
         $email = $pessoas['email'];
         $cpf = $pessoas['cpf'];
+        $sexo = $pessoas['sexo'];
        } 
        if (array_key_exists('apagar',$_GET)){
         $apagar = $_GET['apagar'];
@@ -39,38 +40,27 @@
      ?>
   
     <form action="form-pessoas.php" method="post">
-    <!--<input type="hidden" name="id"  value="<?php echo $id; ?>">-->
+    <input type="hidden" name="id"  value="<?php echo $id; ?>">
        
             <strong>Nome:</strong><br>
-            <input type="text" name="nome"value=" <?php echo $nome;?>"required><br>
+            <input type="text" name="nome"value=" <?php echo $nome;?>"required><br><br>
+            
             <strong>E-mail:</strong><br>
-            <input type="email" name="email"value="<?php echo $email?>"required><br>
+            <input type="email" name="email"value="<?php echo $email?>"required><br><br>
+           
             <strong>CPF:</strong><br>
             <input type="text" name="cpf"value="<?php echo $cpf?>"required><br><br>
+            
+            <strong>Sexo:</strong><br>
+            <input type="radio" name="sexo"value="M" <?php if ($sexo =="M") echo "checked";?>>Masculino
+            <input type="radio" name="sexo"value="F"<?php if ($sexo =="F") echo "checked";?>> Feminio
+            <br>
+            <br>
             <button class=botao type= submit> GRAVAR</button>
             <!-- Botão para um chamar a pagina com campos limpos -->
-            <a href="form-pessoas.php"><input type= "button" value ="NOVO"> </a>
-            <!-- Botão para apagar um dado do do id selecionado-->
-         
-           
-              
-
-
-              
-            
+            <a href="form-pessoas.php"><input type= "button" value ="LIMPAR"> </a>
+ 
 </fieldset>
-             <!--  Genero:<br>
-             <input type="radio" name="genero" required value ="masculino">Masculino
-            <br><input type="radio" name="genero" required value ="feminino">Feminino
-            <br><input type="radio" name="genero" required value ="outros">Outros
-           
-         <select sexo="Genero:<br>"required>
-                <option selected disabled value="">Escolha</option>
-                <option>Masculino</option>
-                <option>Feminino</option>
-                <option>Outros</option>
-            </select><br><br>-->
-            
     <fieldset class="tabela">   
     </form>
      
@@ -82,14 +72,15 @@
         $nome = $_POST['nome'];
         $email =$_POST['email'];
         $cpf =$_POST['cpf'];
+        $sexo =$_POST['sexo'];
        
-       // $genero=$_POST['genero'];
+
        $id = $_POST['id'];
       
        if($id==''){
-                    $msg =INCLUIR($nome, $email, $cpf);
+                    $msg =INCLUIR($nome, $email, $cpf, $sexo);
                  } else{
-                     $msg = EDITAR($id, $nome, $email, $cpf);
+                     $msg = EDITAR($id, $nome, $email, $cpf, $sexo);
                  }
         }echo"<br>";
         ?>  
@@ -99,7 +90,8 @@
       <th>Nome</th> 
       <th>E-mail</th> 
       <th>CPF</th> 
-      <!--<th>Genero</th>-->
+      <th>Sexo</th>
+      
     </tr>
 <?php
 $dados = LISTAR();
@@ -111,9 +103,10 @@ echo "<td>" .$linha ['id']. "</td>";
 echo "<td>" .$linha ['nome']. "</td>";
 echo "<td>" .$linha ['email']. "</td>";
 echo "<td>" .$linha ['cpf']. "</td>";
+echo "<td>" .$linha ['sexo']. "</td>";
 //echo "<td>" .$linha ['genero']. "</td>";
 echo "<td><a href='form-pessoas.php?id=".$linha ['id']."'>Editar</a></td>";
-echo "<td><a href='form-pessoa.php?apagar=".$linha['id']."'>Apagar</a></td>";
+echo "<td><a href='form-pessoas.php?apagar=".$linha['id']."'>Apagar</a></td>";
 echo "</tr>";
 }
 ?>
