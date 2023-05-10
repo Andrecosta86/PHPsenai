@@ -20,13 +20,13 @@
             <tr>
                 <td>$nome</td>
                 <td><a href='$imagem' target='_blank'>🎂</td>
-                <td><a href='$valor' target='_blank'>🤑</td>
+                <td>$valor</td>
                 <td><a href='admin.php?editar=$id'>✏</td> 
                 <td><a href='admin.php?apagar=$id'>🗑</td>    
 
             </tr>";
             }
-            //<td>$valor</td>
+            
             ?>
         </table>
     </div>

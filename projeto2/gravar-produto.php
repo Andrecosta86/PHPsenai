@@ -9,8 +9,7 @@ $gravar =true;
 
 $nome = $_POST["nome"];
 $valor = $_POST["valor"];
-//var_dump($nome);
-//var_dump($valor);
+
 
     if($nome == ""){
         $gravar = false;
@@ -24,7 +23,7 @@ $valor = $_POST["valor"];
     $arquivo ="";
     $newFile = $_FILES["fileToUpload"]["name"];
     $fileAtual = $_POST["fileAtual"];
-    $uploadOK=1;
+    //$uploadOK=1;
     if($newFile != ""){
        include ("upload.php");
        if($uploadOK !=1){
@@ -42,8 +41,8 @@ $valor = $_POST["valor"];
     if($gravar){
         
         if($id ==""){
-            $sql = "INSERT INTO produto(nome, valor, imagem VALUES('$nome','$valor','$arquivo')";
-            var_dump($sql);
+            $sql = "INSERT INTO produto(nome, valor, imagem) VALUES('$nome', $valor,'$arquivo')";
+            
         } else {
             $sql = "UPDATE produto SET nome = '$nome', valor = '$valor', imagem ='$arquivo' where id = $id";
             if ($fileAtual != "" && $arquivo != "" && $fileAtual != $arquivo){
@@ -80,7 +79,7 @@ if(isset($_GET['apagar'])){
     $linha = $result-> fetch_assoc();
     $imagem = $linha['imagem'];
     unlink($imagem);
-    $sql = "delete from produto where id = $id";
+    $sql = "delete from produto WHERE id = $id";
    $result = conectar($sql);
   
 

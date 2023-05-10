@@ -3,6 +3,7 @@ session_start();
 $acesso ="";
 if(isset($_POST["email"])){
     include('conectar.php');
+    
     $email = $_POST["email"];
     $senha = $_POST["senha"];
     $retorno = conectar("select * from admin where email = '$email' and senha = '$senha';");

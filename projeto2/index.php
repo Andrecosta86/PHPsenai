@@ -40,7 +40,7 @@
     include("conectar.php");
     $sql = "select * from produto";
     $resultado = conectar($sql);
-    //var_dump($resultado);
+    
     $i = 0;
     while ($linha = $resultado->fetch_assoc()) {
         $nome = $linha['nome'];
@@ -64,7 +64,7 @@
     ?>
 </div>
 <a href="#" id="carrinho-principal" class="btn btn-primary btn-lg"
- onclick="carrinho()" data-bs-toggle="modal" data-bs-target="#myModal">🛒</a>
+ onclick="carrinho()" data-bs-toggle="modal" data-bs-target="#myModal">SEUS PEDIDOS ESTÃO AQUI!🛒</a>
 
 <!-- o modal -->
 <div class="modal" id="myModal">
@@ -127,7 +127,7 @@
                     p.nome = document.getElementsByClassName("card-title")[i].innerHTML;
                     p.valor = document.getElementsByClassName("card-text")[i].innerHTML;
                     n = p.valor.indexOf("<");
-                    p.valor = p.valor.substring(3, n);
+                    p.valor = p.valor.substring(2, n);
                     p.valor = p.valor.replace(",", ".")
                     p.quantidade = 1;
                     console.log(p);
@@ -184,7 +184,7 @@
         }
 
         function enviarEncomenda() {
-            fone = "5561985607460";
+            fone = "5561985962338";
             if(valorEncomenda <= 0){
                 alert("A encomenda deve ter ao menos 1 produto.");
                 return;

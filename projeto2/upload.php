@@ -18,7 +18,7 @@ if(isset($_POST["submit"])){
     // teste se o arquivo já existe na pasta
     if(file_exists($arquivo)){
         $msgUpload .= "Arquivo existente renomear ou enviar outro arquivo!<br>";
-        $uploadOk = 0;
+        $uploadOk = 1;// tirei de 0 para 1
     }
 
     // Verifica o tamanho do arquivo

@@ -13,15 +13,18 @@ function conectar($sql){
 
     $servidor="localhost";
     $usuario =$id."root";
-    //$banco =$id."projeto2";
+    $banco =$id."projeto2";
 
-    $con = new mysqli($servidor, $usuario, $senha, "projeto2");
+    $con = new mysqli($servidor, $usuario, $senha, $banco);
    
 
     if($con->connect_error){
     die("Erro:".$con->connect_error);
 
+
+    
     }
+  
     return $con->query($sql);
    
 } 
