@@ -1,6 +1,4 @@
 <?php 
-//include(admin.php);
-
 
 session_start();
 include('validar-acesso.php');
@@ -21,7 +19,7 @@ include('nova-senha.php');
             <div class="col-6">
                 <h2>Alterar Senha <a href="admin.php" class="btn btn-danger">Voltar</a> </h2>
                
-                  <form action="nova-senha.php" method="POST">
+                  <form action="form-senha.php" method="POST">
                     <div class="mb-3 mt-3">
                         <label for="senha-atual" class="form-label">Senha Atual:</label>
                         <input type="password" class="form-control" id="senha-atual" placeholder="******" name="senha-atual" required>

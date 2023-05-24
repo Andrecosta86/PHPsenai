@@ -24,7 +24,7 @@ if(isset($_GET['id'])){
         $sql ="DELETE FROM tarefa WHERE id=$id";
         CONECTAR($sql);
         //echo  "<script>alert('deseja realmente apagar?');</script>";
-        $tpMS= "danger";
+        
      }
 
 ?>
