@@ -11,7 +11,7 @@
                 
                 <?php 
                 //listar tarefas         
-                   $sql = "select * from tarefa";
+                   $sql = "select * from tarefa where id_usuario =$id_usuario ";
                     $resultado = conectar($sql);
                     while($linha = $resultado ->fetch_assoc()){
                     $fazer = $linha['fazer'];

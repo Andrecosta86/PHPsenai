@@ -2,6 +2,9 @@
 session_start();
 
 include("conectar.php");
+//echo ">".$_SESSION['id_usuario'];
+$id_usuario = $_SESSION['id_usuario'];
+
     
 ?>
 

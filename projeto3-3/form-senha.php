@@ -1,6 +1,6 @@
 <?php 
 
-session_start();
+
 include('validar-acesso.php');
 include('nova-senha.php');
 ?>
@@ -36,7 +36,10 @@ include('nova-senha.php');
                         Salvar
                     </button>
                   </form>
-                </div>
+                  <?php 
+                  echo "$msg";
+                  ?>
+                  
         </div>
     </div>
 </body> 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$id_usuario = $_SESSION['id_usuario'];
 include('conectar.php');
 include('conectar-02.php');
 //$id='';
@@ -19,7 +20,7 @@ if(isset($_GET['id'])){
     $sql = "UPDATE tarefa SET fazer = '$fazer' where id=$id";
     $scopo = mysqli_query($con, $sql);
      }
-     if (($_GET['id_apagar'])){
+     if (isset($_GET['id_apagar'])){
         $id=$_GET['id_apagar'];
         $sql ="DELETE FROM tarefa WHERE id=$id";
         CONECTAR($sql);
